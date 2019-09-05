@@ -1,0 +1,15 @@
+.colockunder{
+	font-weight: normal;
+}
+.colockunder p{
+	display: inline-block;
+	position: relative;
+}
+p .placeHolder{
+	visibility: hidden;
+}
+span.real{
+	position: absolute;
+	left: 0;
+	top:0;
+}

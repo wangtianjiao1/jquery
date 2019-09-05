@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+    
+    <link rel="stylesheet" type="text/css" href="public/css/digitinal.css">
+    <link rel="stylesheet" type="text/css" href="public/css/bigclock.css">
+    <link rel="stylesheet" type="text/css" href="public/css/animate.css">
+
+    <script src="public/js/jquery-3.1.1.min.js"></script>
+	<script src="public/js/clock.js"></script>
+	<script src="public/js/digitinal.js"></script>
+	<script src="public/js/bigclockview.js"></script>
+
+
+
+</head>
+<style id="clock-animations"></style>
+<body>
+	<h2 style="text-align: center;color: grey">jQuery时钟</h2>
+	<div id="circleclock"></div>
+	<div class="clockshow">
+		<div class="clocktime"></div>
+		<div class="day"></div>
+		<div class="timestyle">
+			<a href="#" data-effectin="rotateIn" data-effectout="rotateOut"><span>翻转</span></a>
+			<a href="#" data-effectin="bounceIn" data-effectout="bounceOut"><span>弹跳</span></a>
+			<a href="#" data-effectin="tada" data-effectout="lightSpeedOut"><span>抖动</span></a>
+			<a href="#" data-effectin="fadeIn" data-effectout="fadeOut"><span>默认</span></a>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		var digital=new Diginal({
+			container:$('.clocktime'),
+      		
+		});
+		var clockview=new Clockview({
+			container:$('#circleclock'),
+		});
+		var clock=new Clock([digital,clockview]);//是一个数组对象
+	   
+        $('.timestyle a').on('click tap', function(e){
+                var effectIn = $(this).data('effectin');
+                var effectOut = $(this).data('effectout');
+                digital.effectIn = effectIn;
+                digital.effectOut = effectOut;
+            });
+
+	    var days = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+            var date = new Date();
+            var i = date.getDay();
+            $('.day').text(days[i]);
+		
+	})
+</script>
